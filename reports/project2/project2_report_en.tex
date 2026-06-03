@@ -1,0 +1,228 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\section{Project 2 - Unit Root
+Testing}\label{project-2---unit-root-testing}
+
+\textbf{Course:} Financial Econometrics\\
+\textbf{Author:} Omid Karami Chamgordani - 400203402\\
+\textbf{Date:} 2022-12-10
+
+\subsection{Objective}\label{objective}
+
+This report studies the time-series properties of an annual Brazilian
+economic series retrieved from Quandl/BCB code \texttt{BCB/226}. The
+main goal is to check whether the series has a unit root and whether
+differencing is required before modeling.
+
+\subsection{Data import and initial
+plot}\label{data-import-and-initial-plot}
+
+The data are imported at annual frequency and plotted over time. The
+visual pattern suggests that the level series is non-stationary. For a
+public GitHub repository, the API key is read from the environment
+variable \texttt{QUANDL\_API\_KEY} rather than hard-coded in the script.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(Quandl)}
+\FunctionTok{library}\NormalTok{(urca)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+
+\FunctionTok{Quandl.api\_key}\NormalTok{(}\FunctionTok{Sys.getenv}\NormalTok{(}\StringTok{"QUANDL\_API\_KEY"}\NormalTok{))}
+\NormalTok{brazil\_c }\OtherTok{=} \FunctionTok{Quandl}\NormalTok{(}\StringTok{"BCB/226"}\NormalTok{, }\AttributeTok{collapse =} \StringTok{"annual"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(brazil\_c[,}\DecValTok{1}\NormalTok{], }\FunctionTok{ts}\NormalTok{(brazil\_c[,}\DecValTok{2}\NormalTok{]), }\AttributeTok{col=}\StringTok{"blue"}\NormalTok{, }\AttributeTok{lwd=}\DecValTok{2}\NormalTok{,}
+     \AttributeTok{xlab=}\StringTok{"date"}\NormalTok{, }\AttributeTok{ylab=}\StringTok{"value"}\NormalTok{)}
+
+\NormalTok{x }\OtherTok{=} \FunctionTok{ts}\NormalTok{(brazil\_c[,}\DecValTok{2}\NormalTok{])}
+\FunctionTok{lm}\NormalTok{(x[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{33}\NormalTok{] }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{32}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+The simple autoregression gives an intercept of approximately 1.2162 and
+a lag coefficient of approximately 0.8191. Because the lag coefficient
+is close to one and the level plot shows persistence, formal unit-root
+tests are needed.
+
+\subsection{Augmented Dickey-Fuller test with
+trend}\label{augmented-dickey-fuller-test-with-trend}
+
+The most general specification includes an intercept and deterministic
+trend. The reported ADF statistic for the lagged level term is about
+-0.8285, while the 5 percent critical value for \texttt{tau3} is about
+-3.50. Therefore, the unit-root null is not rejected in the trend
+specification.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# step 1: trend specification}
+\NormalTok{unitroot\_A }\OtherTok{\textless{}{-}} \FunctionTok{ur.df}\NormalTok{(x, }\AttributeTok{type=}\FunctionTok{c}\NormalTok{(}\StringTok{"trend"}\NormalTok{), }\AttributeTok{selectlags=}\FunctionTok{c}\NormalTok{(}\StringTok{"AIC"}\NormalTok{))}
+\FunctionTok{summary}\NormalTok{(unitroot\_A)}
+\FunctionTok{plot}\NormalTok{(unitroot\_A)}
+\NormalTok{unitroot\_A}\SpecialCharTok{@}\NormalTok{teststat}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{ADF test with drift}\label{adf-test-with-drift}
+
+After removing the deterministic trend, the drift specification is
+estimated. The ADF statistic is about -0.0529, which is again far above
+the 5 percent critical value in absolute terms. The null of a unit root
+is still not rejected.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# step 5: drift specification}
+\NormalTok{unitroot\_A }\OtherTok{\textless{}{-}} \FunctionTok{ur.df}\NormalTok{(x, }\AttributeTok{type=}\FunctionTok{c}\NormalTok{(}\StringTok{"drift"}\NormalTok{), }\AttributeTok{selectlags=}\FunctionTok{c}\NormalTok{(}\StringTok{"AIC"}\NormalTok{))}
+\FunctionTok{summary}\NormalTok{(unitroot\_A)}
+\FunctionTok{plot}\NormalTok{(unitroot\_A)}
+\NormalTok{unitroot\_A}\SpecialCharTok{@}\NormalTok{teststat}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{ADF test without deterministic
+terms}\label{adf-test-without-deterministic-terms}
+
+The final level specification removes both the trend and the intercept.
+The test again supports the same conclusion: the level series behaves as
+a non-stationary series.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# step 8: no deterministic terms}
+\NormalTok{unitroot\_A }\OtherTok{\textless{}{-}} \FunctionTok{ur.df}\NormalTok{(x, }\AttributeTok{type=}\FunctionTok{c}\NormalTok{(}\StringTok{"none"}\NormalTok{), }\AttributeTok{selectlags=}\FunctionTok{c}\NormalTok{(}\StringTok{"AIC"}\NormalTok{))}
+\FunctionTok{summary}\NormalTok{(unitroot\_A)}
+\FunctionTok{plot}\NormalTok{(unitroot\_A)}
+\NormalTok{unitroot\_A}\SpecialCharTok{@}\NormalTok{teststat}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{First difference}\label{first-difference}
+
+The first difference of the series is then tested. After differencing,
+the evidence supports stationarity more strongly than in the level
+series. This suggests that the original series can be treated as
+integrated of order one, I(1), for subsequent modeling.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# First difference}
+\NormalTok{dx }\OtherTok{\textless{}{-}} \FunctionTok{diff}\NormalTok{(x)}
+\FunctionTok{plot}\NormalTok{(dx)}
+
+\CommentTok{\# ADF on first difference}
+\NormalTok{unitroot\_A }\OtherTok{\textless{}{-}} \FunctionTok{ur.df}\NormalTok{(dx, }\AttributeTok{type=}\FunctionTok{c}\NormalTok{(}\StringTok{"trend"}\NormalTok{), }\AttributeTok{selectlags=}\FunctionTok{c}\NormalTok{(}\StringTok{"AIC"}\NormalTok{))}
+\FunctionTok{summary}\NormalTok{(unitroot\_A)}
+\FunctionTok{plot}\NormalTok{(unitroot\_A)}
+\NormalTok{unitroot\_A}\SpecialCharTok{@}\NormalTok{teststat}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Conclusion}\label{conclusion}
+
+The level series is non-stationary under the common ADF specifications.
+After first differencing, the series is more consistent with
+stationarity. In future work, models should use the differenced series
+or include an integration component.
+
+\end{document}

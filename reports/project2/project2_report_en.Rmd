@@ -1,0 +1,97 @@
+---
+geometry: margin=1in
+toc: true
+numbersections: true
+fontsize: 11pt
+---
+
+# Project 2 - Unit Root Testing
+
+**Course:** Financial Econometrics  
+**Author:** Omid Karami Chamgordani - 400203402  
+**Date:** 2022-12-10
+
+## Objective
+
+This report studies the time-series properties of an annual Brazilian economic series retrieved from Quandl/BCB code `BCB/226`. The main goal is to check whether the series has a unit root and whether differencing is required before modeling.
+
+## Data import and initial plot
+
+The data are imported at annual frequency and plotted over time. The visual pattern suggests that the level series is non-stationary. For a public GitHub repository, the API key is read from the environment variable `QUANDL_API_KEY` rather than hard-coded in the script.
+
+```{r, warning=FALSE, message=FALSE, echo=TRUE}
+library(Quandl)
+library(urca)
+library(tidyverse)
+
+Quandl.api_key(Sys.getenv("QUANDL_API_KEY"))
+brazil_c = Quandl("BCB/226", collapse = "annual")
+plot(brazil_c[,1], ts(brazil_c[,2]), col="blue", lwd=2,
+     xlab="date", ylab="value")
+
+x = ts(brazil_c[,2])
+lm(x[2:33] ~ x[1:32])
+```
+
+
+The simple autoregression gives an intercept of approximately 1.2162 and a lag coefficient of approximately 0.8191. Because the lag coefficient is close to one and the level plot shows persistence, formal unit-root tests are needed.
+
+## Augmented Dickey-Fuller test with trend
+
+The most general specification includes an intercept and deterministic trend. The reported ADF statistic for the lagged level term is about -0.8285, while the 5 percent critical value for `tau3` is about -3.50. Therefore, the unit-root null is not rejected in the trend specification.
+
+```{r, warning=FALSE, message=FALSE, echo=TRUE}
+# step 1: trend specification
+unitroot_A <- ur.df(x, type=c("trend"), selectlags=c("AIC"))
+summary(unitroot_A)
+plot(unitroot_A)
+unitroot_A@teststat
+```
+
+
+## ADF test with drift
+
+After removing the deterministic trend, the drift specification is estimated. The ADF statistic is about -0.0529, which is again far above the 5 percent critical value in absolute terms. The null of a unit root is still not rejected.
+
+```{r, warning=FALSE, message=FALSE, echo=TRUE}
+# step 5: drift specification
+unitroot_A <- ur.df(x, type=c("drift"), selectlags=c("AIC"))
+summary(unitroot_A)
+plot(unitroot_A)
+unitroot_A@teststat
+```
+
+
+## ADF test without deterministic terms
+
+The final level specification removes both the trend and the intercept. The test again supports the same conclusion: the level series behaves as a non-stationary series.
+
+```{r, warning=FALSE, message=FALSE, echo=TRUE}
+# step 8: no deterministic terms
+unitroot_A <- ur.df(x, type=c("none"), selectlags=c("AIC"))
+summary(unitroot_A)
+plot(unitroot_A)
+unitroot_A@teststat
+```
+
+
+## First difference
+
+The first difference of the series is then tested. After differencing, the evidence supports stationarity more strongly than in the level series. This suggests that the original series can be treated as integrated of order one, I(1), for subsequent modeling.
+
+```{r, warning=FALSE, message=FALSE, echo=TRUE}
+# First difference
+dx <- diff(x)
+plot(dx)
+
+# ADF on first difference
+unitroot_A <- ur.df(dx, type=c("trend"), selectlags=c("AIC"))
+summary(unitroot_A)
+plot(unitroot_A)
+unitroot_A@teststat
+```
+
+
+## Conclusion
+
+The level series is non-stationary under the common ADF specifications. After first differencing, the series is more consistent with stationarity. In future work, models should use the differenced series or include an integration component.

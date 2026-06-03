@@ -1,0 +1,240 @@
+---
+geometry: margin=1in
+toc: true
+numbersections: true
+fontsize: 11pt
+---
+
+# Project 4 - Long Memory, ARMA, FIGARCH, and Value-at-Risk
+
+**Course:** Financial Econometrics  
+**Author:** Omid Karami Chamgordani - 400203402  
+**Date:** 2023-02-07
+
+## Objective
+
+This project studies daily returns of the financial institutions index between 2008 and 2023. It examines long memory, selects an ARMA mean equation, tests residual diagnostics and normality, estimates a FI-GARCH-type volatility model, and computes Value-at-Risk using several methods.
+
+## Libraries and data
+
+The cleaned Excel files contain daily dates and prices. The financial institutions index is stored in `sarmaye.xlsx`; the overall market index is stored in `index.xlsx` and is later used as an external regressor.
+
+```r
+library(pdR)
+library(tidyverse)
+library(ggplot2)
+library(forecast)
+library(tseries)
+library(rio)
+library(readxl)
+library(zoo)
+library(lmtest)
+library(qqplotr)
+library(devtools)
+library(fracdiff)
+library(MASS)
+library(xts)
+library(PerformanceAnalytics)
+library(tidyr)
+library(rugarch)
+library(moments)
+library(dplyr)
+library(nortest)
+library(fBasics)
+library(TTR)
+library(quantmod)
+library(stargazer)
+library(ggthemes)
+library(gridExtra)
+
+sarmaye <- read_excel("data/sarmaye.xlsx")
+ind <- read_excel("data/index.xlsx")
+```
+
+
+## Price and return series
+
+The price series is converted to a daily time series with frequency 235. Returns are defined as first differences of log prices. In the plot, daily returns remain within approximately -10 percent and +10 percent.
+
+```r
+x <- ts(sarmaye$price, start=c(2008, 12, 06), frequency=235)
+ts.plot(x, main="daily price of investment index", ylab="price")
+
+returns <- diff(log(x), lag=1)
+returns2 <- ts(returns, start=c(2008, 12, 06), frequency=235)
+ts.plot(returns2, main="daily return of investment index",
+        ylab="return", ylim=c(-0.1, 0.1))
+```
+
+
+## Long memory
+
+The GPH fractional-d estimate is about `d = 0.234`. Since this value is between 0 and 0.5, the return series is stationary, mean-reverting, and has long memory with finite variance.
+
+```r
+fdGPH(returns, bandw.exp=0.5)
+```
+
+
+## ARMA order selection
+
+The mean equation is selected by comparing AIC, BIC, and `auto.arima`. The AIC search chooses ARMA(5,5), BIC chooses ARMA(1,2), and `auto.arima` chooses ARIMA(4,0,1). Because the ARMA(5,5) has the highest log-likelihood among the three reported alternatives, it is used for the mean equation.
+
+| Method | p | q | Log-likelihood |
+|---|---:|---:|---:|
+| AIC grid search | 5 | 5 | 10851.72 |
+| BIC grid search | 1 | 2 | 10835.95 |
+| auto.arima | 4 | 1 | 10841.42 |
+
+```r
+AIC <- matrix(nrow=6, ncol=6)
+for (i in 1:6) {
+  for (j in 1:6) {
+    AIC[i,j] <- AIC(arima(returns, c(i-1,0,j-1), method=c("CSS-ML"),
+                          optim.control=list(maxit=5000), kappa=1e4), k=2)
+  }
+}
+for (i in 1:6) {
+  for (j in 1:6) {
+    if (AIC[i,j] == min(AIC)) { p <- i-1; q <- j-1 }
+  }
+}
+arma_sarmaye <- arima(returns, c(p,0,q), method=c("CSS-ML"),
+                      optim.control=list(maxit=5000), kappa=1e4)
+arma_sarmaye
+
+BIC <- matrix(nrow=6, ncol=6)
+for (i in 1:6) {
+  for (j in 1:6) {
+    BIC[i,j] <- BIC(arima(returns, c(i-1,0,j-1), method=c("CSS-ML"),
+                          optim.control=list(maxit=5000), kappa=1e4))
+  }
+}
+for (i in 1:6) {
+  for (j in 1:6) {
+    if (BIC[i,j] == min(BIC)) { p <- i-1; q <- j-1 }
+  }
+}
+arma_sarmaye2 <- arima(returns, c(p,0,q), method=c("CSS-ML"),
+                       optim.control=list(maxit=5000), kappa=1e4)
+arma_sarmaye2
+
+auto.arima(returns)
+
+mean.equ <- arma_sarmaye
+summary(mean.equ)
+```
+
+
+## Mean-model diagnostics
+
+The ACF and PACF of the ARMA residuals are close to zero. The Box-Pierce and Ljung-Box p-values are both approximately 0.958, so the null hypothesis that residuals are white noise is not rejected at the 5 percent level. This supports the adequacy of the mean equation.
+
+```r
+mean.residuals <- mean.equ$residuals
+acf(mean.residuals, lag.max=8)
+pacf(mean.residuals, lag.max=8)
+
+Box.test(mean.residuals, lag=log(3393), c("Box-Pierce"))
+Box.test(mean.residuals, lag=log(3393), c("Ljung-Box"))
+```
+
+
+## Distributional analysis and ARCH effects
+
+The return distribution is right-skewed and leptokurtic. The reported skewness is approximately 0.730 and excess kurtosis is approximately 3.894. The Anderson-Darling normality test gives a p-value below 0.05, so normality is rejected. Tests on squared residuals indicate remaining volatility dependence, which motivates GARCH-type volatility modeling.
+
+```r
+skewness(returns)
+kurtosis(returns)
+hist(returns)
+ad.test(returns)
+plot(density(returns))
+chart.QQPlot(returns, distribution="norm")
+
+acf(mean.residuals^2, lag.max=30)
+pacf(mean.residuals^2, lag.max=30)
+Box.test(mean.residuals^2, lag=log(3393), c("Box-Pierce"))
+Box.test(mean.residuals^2, lag=log(3393), c("Ljung-Box"))
+```
+
+
+## FI-GARCH modeling
+
+A FI-GARCH specification is fitted with an ARMA(5,5) mean equation, ARFIMA terms, and skewed Student-t innovations. A second model also includes the overall market index return as an external regressor in the mean equation.
+
+```r
+garch <- ugarchspec(variance.model=list(model="fiGARCH", garchOrder=c(1,1)),
+                     mean.model=list(armaOrder=c(5,5), include.mean=FALSE,
+                                     archm=FALSE, archpow=1, arfima=TRUE,
+                                     archex=FALSE),
+                     distribution.model="sstd")
+fit <- ugarchfit(garch, data=returns)
+fit
+plot(fit, which="all")
+
+z1 <- ts(ind$index)
+z2 <- diff(log(z1), lag=1)
+garch2 <- ugarchspec(variance.model=list(model="fiGARCH", garchOrder=c(1,1)),
+                      mean.model=list(armaOrder=c(5,5), include.mean=FALSE,
+                                      archm=FALSE, archpow=1, arfima=TRUE,
+                                      archex=TRUE,
+                                      external.regressors=matrix(z2)),
+                      distribution.model="sstd")
+fit2 <- ugarchfit(garch2, data=returns)
+fit2
+plot(fit2, which="all")
+```
+
+
+## Value-at-Risk
+
+The fitted volatility model is used to plot conditional risk bands. The one-period 95 percent VaR is also computed by modified, Gaussian, and historical methods.
+
+| Method | VaR |
+|---|---:|
+| Modified | -0.01336006 |
+| Gaussian | -0.01659899 |
+| Historical | -0.01464882 |
+
+Using the modified VaR as the benchmark, there is a 5 percent probability of losing at least about 1.3 percent in one day when holding the financial institutions index.
+
+```r
+n <- length(returns)
+model.fit <- ugarchfit(spec=garch, data=returns, solver="solnp")
+model.fit
+
+qplot(y=returns, x=1:n, geom="point") +
+  geom_point(size=0.1) +
+  geom_line(aes(y=model.fit@fit$sigma*qdist(distribution="sstd",
+                                            shape=3.4125, p=0.05), x=1:n),
+            colour="red", size=1.0) +
+  geom_line(aes(y=model.fit@fit$sigma*qdist(distribution="sstd",
+                                            shape=3.4125, p=0.95), x=1:n),
+            colour="red", size=1.0) +
+  labs(x=" ", y="Daily Return", title="Value at Risk Comparison")
+
+sarmaye <- data.frame(cbind(year=substr(sarmaye[,1],1,4),
+                            month=substr(sarmaye[,1],5,6),
+                            day=substr(sarmaye[,1],7,8), sarmaye))
+sarmaye$date <- as.Date(sarmaye$date)
+price_xts <- xts(sarmaye$price, order.by=sarmaye$date)
+return_xts <- diff(log(price_xts), lag=1)
+
+mean(returns)
+sd(returns)
+skewness(returns)
+kurtosis(returns)
+
+VaR(R=return_xts, p=0.95, method=c("modified"), invert=TRUE,
+    mu=0.001377912, sigma=0.01093079, m3=0.7302357, m4=3.893968)
+VaR(R=return_xts, p=0.95, method=c("gaussian"), invert=TRUE,
+    mu=0.001377912, sigma=0.01093079, m3=0.7302357, m4=3.893968)
+VaR(R=return_xts, p=0.95, method=c("historical"), invert=TRUE,
+    mu=0.001377912, sigma=0.01093079, m3=0.7302357, m4=3.893968)
+```
+
+
+## Conclusion
+
+The return series is stationary but long-memory. The ARMA(5,5) mean equation is adequate according to residual autocorrelation diagnostics, but returns are non-normal and volatility clustering remains. FI-GARCH modeling and VaR estimation are therefore appropriate tools for the risk analysis.

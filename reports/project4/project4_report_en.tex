@@ -1,0 +1,403 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\section{Project 4 - Long Memory, ARMA, FIGARCH, and
+Value-at-Risk}\label{project-4---long-memory-arma-figarch-and-value-at-risk}
+
+\textbf{Course:} Financial Econometrics\\
+\textbf{Author:} Omid Karami Chamgordani - 400203402\\
+\textbf{Date:} 2023-02-07
+
+\subsection{Objective}\label{objective}
+
+This project studies daily returns of the financial institutions index
+between 2008 and 2023. It examines long memory, selects an ARMA mean
+equation, tests residual diagnostics and normality, estimates a
+FI-GARCH-type volatility model, and computes Value-at-Risk using several
+methods.
+
+\subsection{Libraries and data}\label{libraries-and-data}
+
+The cleaned Excel files contain daily dates and prices. The financial
+institutions index is stored in \texttt{sarmaye.xlsx}; the overall
+market index is stored in \texttt{index.xlsx} and is later used as an
+external regressor.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(pdR)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(forecast)}
+\FunctionTok{library}\NormalTok{(tseries)}
+\FunctionTok{library}\NormalTok{(rio)}
+\FunctionTok{library}\NormalTok{(readxl)}
+\FunctionTok{library}\NormalTok{(zoo)}
+\FunctionTok{library}\NormalTok{(lmtest)}
+\FunctionTok{library}\NormalTok{(qqplotr)}
+\FunctionTok{library}\NormalTok{(devtools)}
+\FunctionTok{library}\NormalTok{(fracdiff)}
+\FunctionTok{library}\NormalTok{(MASS)}
+\FunctionTok{library}\NormalTok{(xts)}
+\FunctionTok{library}\NormalTok{(PerformanceAnalytics)}
+\FunctionTok{library}\NormalTok{(tidyr)}
+\FunctionTok{library}\NormalTok{(rugarch)}
+\FunctionTok{library}\NormalTok{(moments)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(nortest)}
+\FunctionTok{library}\NormalTok{(fBasics)}
+\FunctionTok{library}\NormalTok{(TTR)}
+\FunctionTok{library}\NormalTok{(quantmod)}
+\FunctionTok{library}\NormalTok{(stargazer)}
+\FunctionTok{library}\NormalTok{(ggthemes)}
+\FunctionTok{library}\NormalTok{(gridExtra)}
+
+\NormalTok{sarmaye }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/sarmaye.xlsx"}\NormalTok{)}
+\NormalTok{ind }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/index.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Price and return series}\label{price-and-return-series}
+
+The price series is converted to a daily time series with frequency 235.
+Returns are defined as first differences of log prices. In the plot,
+daily returns remain within approximately -10 percent and +10 percent.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(sarmaye}\SpecialCharTok{$}\NormalTok{price, }\AttributeTok{start=}\FunctionTok{c}\NormalTok{(}\DecValTok{2008}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{06}\NormalTok{), }\AttributeTok{frequency=}\DecValTok{235}\NormalTok{)}
+\FunctionTok{ts.plot}\NormalTok{(x, }\AttributeTok{main=}\StringTok{"daily price of investment index"}\NormalTok{, }\AttributeTok{ylab=}\StringTok{"price"}\NormalTok{)}
+
+\NormalTok{returns }\OtherTok{\textless{}{-}} \FunctionTok{diff}\NormalTok{(}\FunctionTok{log}\NormalTok{(x), }\AttributeTok{lag=}\DecValTok{1}\NormalTok{)}
+\NormalTok{returns2 }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(returns, }\AttributeTok{start=}\FunctionTok{c}\NormalTok{(}\DecValTok{2008}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{06}\NormalTok{), }\AttributeTok{frequency=}\DecValTok{235}\NormalTok{)}
+\FunctionTok{ts.plot}\NormalTok{(returns2, }\AttributeTok{main=}\StringTok{"daily return of investment index"}\NormalTok{,}
+        \AttributeTok{ylab=}\StringTok{"return"}\NormalTok{, }\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Long memory}\label{long-memory}
+
+The GPH fractional-d estimate is about \texttt{d\ =\ 0.234}. Since this
+value is between 0 and 0.5, the return series is stationary,
+mean-reverting, and has long memory with finite variance.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{fdGPH}\NormalTok{(returns, }\AttributeTok{bandw.exp=}\FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{ARMA order selection}\label{arma-order-selection}
+
+The mean equation is selected by comparing AIC, BIC, and
+\texttt{auto.arima}. The AIC search chooses ARMA(5,5), BIC chooses
+ARMA(1,2), and \texttt{auto.arima} chooses ARIMA(4,0,1). Because the
+ARMA(5,5) has the highest log-likelihood among the three reported
+alternatives, it is used for the mean equation.
+
+\begin{longtable}[]{@{}lrrr@{}}
+\toprule\noalign{}
+Method & p & q & Log-likelihood \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+AIC grid search & 5 & 5 & 10851.72 \\
+BIC grid search & 1 & 2 & 10835.95 \\
+auto.arima & 4 & 1 & 10841.42 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{AIC }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\AttributeTok{nrow=}\DecValTok{6}\NormalTok{, }\AttributeTok{ncol=}\DecValTok{6}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) \{}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) \{}
+\NormalTok{    AIC[i,j] }\OtherTok{\textless{}{-}} \FunctionTok{AIC}\NormalTok{(}\FunctionTok{arima}\NormalTok{(returns, }\FunctionTok{c}\NormalTok{(i}\DecValTok{{-}1}\NormalTok{,}\DecValTok{0}\NormalTok{,j}\DecValTok{{-}1}\NormalTok{), }\AttributeTok{method=}\FunctionTok{c}\NormalTok{(}\StringTok{"CSS{-}ML"}\NormalTok{),}
+                          \AttributeTok{optim.control=}\FunctionTok{list}\NormalTok{(}\AttributeTok{maxit=}\DecValTok{5000}\NormalTok{), }\AttributeTok{kappa=}\FloatTok{1e4}\NormalTok{), }\AttributeTok{k=}\DecValTok{2}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) \{}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) \{}
+    \ControlFlowTok{if}\NormalTok{ (AIC[i,j] }\SpecialCharTok{==} \FunctionTok{min}\NormalTok{(AIC)) \{ p }\OtherTok{\textless{}{-}}\NormalTok{ i}\DecValTok{{-}1}\NormalTok{; q }\OtherTok{\textless{}{-}}\NormalTok{ j}\DecValTok{{-}1}\NormalTok{ \}}
+\NormalTok{  \}}
+\NormalTok{\}}
+\NormalTok{arma\_sarmaye }\OtherTok{\textless{}{-}} \FunctionTok{arima}\NormalTok{(returns, }\FunctionTok{c}\NormalTok{(p,}\DecValTok{0}\NormalTok{,q), }\AttributeTok{method=}\FunctionTok{c}\NormalTok{(}\StringTok{"CSS{-}ML"}\NormalTok{),}
+                      \AttributeTok{optim.control=}\FunctionTok{list}\NormalTok{(}\AttributeTok{maxit=}\DecValTok{5000}\NormalTok{), }\AttributeTok{kappa=}\FloatTok{1e4}\NormalTok{)}
+\NormalTok{arma\_sarmaye}
+
+\NormalTok{BIC }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\AttributeTok{nrow=}\DecValTok{6}\NormalTok{, }\AttributeTok{ncol=}\DecValTok{6}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) \{}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) \{}
+\NormalTok{    BIC[i,j] }\OtherTok{\textless{}{-}} \FunctionTok{BIC}\NormalTok{(}\FunctionTok{arima}\NormalTok{(returns, }\FunctionTok{c}\NormalTok{(i}\DecValTok{{-}1}\NormalTok{,}\DecValTok{0}\NormalTok{,j}\DecValTok{{-}1}\NormalTok{), }\AttributeTok{method=}\FunctionTok{c}\NormalTok{(}\StringTok{"CSS{-}ML"}\NormalTok{),}
+                          \AttributeTok{optim.control=}\FunctionTok{list}\NormalTok{(}\AttributeTok{maxit=}\DecValTok{5000}\NormalTok{), }\AttributeTok{kappa=}\FloatTok{1e4}\NormalTok{))}
+\NormalTok{  \}}
+\NormalTok{\}}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) \{}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) \{}
+    \ControlFlowTok{if}\NormalTok{ (BIC[i,j] }\SpecialCharTok{==} \FunctionTok{min}\NormalTok{(BIC)) \{ p }\OtherTok{\textless{}{-}}\NormalTok{ i}\DecValTok{{-}1}\NormalTok{; q }\OtherTok{\textless{}{-}}\NormalTok{ j}\DecValTok{{-}1}\NormalTok{ \}}
+\NormalTok{  \}}
+\NormalTok{\}}
+\NormalTok{arma\_sarmaye2 }\OtherTok{\textless{}{-}} \FunctionTok{arima}\NormalTok{(returns, }\FunctionTok{c}\NormalTok{(p,}\DecValTok{0}\NormalTok{,q), }\AttributeTok{method=}\FunctionTok{c}\NormalTok{(}\StringTok{"CSS{-}ML"}\NormalTok{),}
+                       \AttributeTok{optim.control=}\FunctionTok{list}\NormalTok{(}\AttributeTok{maxit=}\DecValTok{5000}\NormalTok{), }\AttributeTok{kappa=}\FloatTok{1e4}\NormalTok{)}
+\NormalTok{arma\_sarmaye2}
+
+\FunctionTok{auto.arima}\NormalTok{(returns)}
+
+\NormalTok{mean.equ }\OtherTok{\textless{}{-}}\NormalTok{ arma\_sarmaye}
+\FunctionTok{summary}\NormalTok{(mean.equ)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Mean-model diagnostics}\label{mean-model-diagnostics}
+
+The ACF and PACF of the ARMA residuals are close to zero. The Box-Pierce
+and Ljung-Box p-values are both approximately 0.958, so the null
+hypothesis that residuals are white noise is not rejected at the 5
+percent level. This supports the adequacy of the mean equation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean.residuals }\OtherTok{\textless{}{-}}\NormalTok{ mean.equ}\SpecialCharTok{$}\NormalTok{residuals}
+\FunctionTok{acf}\NormalTok{(mean.residuals, }\AttributeTok{lag.max=}\DecValTok{8}\NormalTok{)}
+\FunctionTok{pacf}\NormalTok{(mean.residuals, }\AttributeTok{lag.max=}\DecValTok{8}\NormalTok{)}
+
+\FunctionTok{Box.test}\NormalTok{(mean.residuals, }\AttributeTok{lag=}\FunctionTok{log}\NormalTok{(}\DecValTok{3393}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"Box{-}Pierce"}\NormalTok{))}
+\FunctionTok{Box.test}\NormalTok{(mean.residuals, }\AttributeTok{lag=}\FunctionTok{log}\NormalTok{(}\DecValTok{3393}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"Ljung{-}Box"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Distributional analysis and ARCH
+effects}\label{distributional-analysis-and-arch-effects}
+
+The return distribution is right-skewed and leptokurtic. The reported
+skewness is approximately 0.730 and excess kurtosis is approximately
+3.894. The Anderson-Darling normality test gives a p-value below 0.05,
+so normality is rejected. Tests on squared residuals indicate remaining
+volatility dependence, which motivates GARCH-type volatility modeling.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{skewness}\NormalTok{(returns)}
+\FunctionTok{kurtosis}\NormalTok{(returns)}
+\FunctionTok{hist}\NormalTok{(returns)}
+\FunctionTok{ad.test}\NormalTok{(returns)}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{density}\NormalTok{(returns))}
+\FunctionTok{chart.QQPlot}\NormalTok{(returns, }\AttributeTok{distribution=}\StringTok{"norm"}\NormalTok{)}
+
+\FunctionTok{acf}\NormalTok{(mean.residuals}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{, }\AttributeTok{lag.max=}\DecValTok{30}\NormalTok{)}
+\FunctionTok{pacf}\NormalTok{(mean.residuals}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{, }\AttributeTok{lag.max=}\DecValTok{30}\NormalTok{)}
+\FunctionTok{Box.test}\NormalTok{(mean.residuals}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{, }\AttributeTok{lag=}\FunctionTok{log}\NormalTok{(}\DecValTok{3393}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"Box{-}Pierce"}\NormalTok{))}
+\FunctionTok{Box.test}\NormalTok{(mean.residuals}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{, }\AttributeTok{lag=}\FunctionTok{log}\NormalTok{(}\DecValTok{3393}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\StringTok{"Ljung{-}Box"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{FI-GARCH modeling}\label{fi-garch-modeling}
+
+A FI-GARCH specification is fitted with an ARMA(5,5) mean equation,
+ARFIMA terms, and skewed Student-t innovations. A second model also
+includes the overall market index return as an external regressor in the
+mean equation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{garch }\OtherTok{\textless{}{-}} \FunctionTok{ugarchspec}\NormalTok{(}\AttributeTok{variance.model=}\FunctionTok{list}\NormalTok{(}\AttributeTok{model=}\StringTok{"fiGARCH"}\NormalTok{, }\AttributeTok{garchOrder=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)),}
+                     \AttributeTok{mean.model=}\FunctionTok{list}\NormalTok{(}\AttributeTok{armaOrder=}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{), }\AttributeTok{include.mean=}\ConstantTok{FALSE}\NormalTok{,}
+                                     \AttributeTok{archm=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{archpow=}\DecValTok{1}\NormalTok{, }\AttributeTok{arfima=}\ConstantTok{TRUE}\NormalTok{,}
+                                     \AttributeTok{archex=}\ConstantTok{FALSE}\NormalTok{),}
+                     \AttributeTok{distribution.model=}\StringTok{"sstd"}\NormalTok{)}
+\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{ugarchfit}\NormalTok{(garch, }\AttributeTok{data=}\NormalTok{returns)}
+\NormalTok{fit}
+\FunctionTok{plot}\NormalTok{(fit, }\AttributeTok{which=}\StringTok{"all"}\NormalTok{)}
+
+\NormalTok{z1 }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(ind}\SpecialCharTok{$}\NormalTok{index)}
+\NormalTok{z2 }\OtherTok{\textless{}{-}} \FunctionTok{diff}\NormalTok{(}\FunctionTok{log}\NormalTok{(z1), }\AttributeTok{lag=}\DecValTok{1}\NormalTok{)}
+\NormalTok{garch2 }\OtherTok{\textless{}{-}} \FunctionTok{ugarchspec}\NormalTok{(}\AttributeTok{variance.model=}\FunctionTok{list}\NormalTok{(}\AttributeTok{model=}\StringTok{"fiGARCH"}\NormalTok{, }\AttributeTok{garchOrder=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)),}
+                      \AttributeTok{mean.model=}\FunctionTok{list}\NormalTok{(}\AttributeTok{armaOrder=}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{), }\AttributeTok{include.mean=}\ConstantTok{FALSE}\NormalTok{,}
+                                      \AttributeTok{archm=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{archpow=}\DecValTok{1}\NormalTok{, }\AttributeTok{arfima=}\ConstantTok{TRUE}\NormalTok{,}
+                                      \AttributeTok{archex=}\ConstantTok{TRUE}\NormalTok{,}
+                                      \AttributeTok{external.regressors=}\FunctionTok{matrix}\NormalTok{(z2)),}
+                      \AttributeTok{distribution.model=}\StringTok{"sstd"}\NormalTok{)}
+\NormalTok{fit2 }\OtherTok{\textless{}{-}} \FunctionTok{ugarchfit}\NormalTok{(garch2, }\AttributeTok{data=}\NormalTok{returns)}
+\NormalTok{fit2}
+\FunctionTok{plot}\NormalTok{(fit2, }\AttributeTok{which=}\StringTok{"all"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Value-at-Risk}\label{value-at-risk}
+
+The fitted volatility model is used to plot conditional risk bands. The
+one-period 95 percent VaR is also computed by modified, Gaussian, and
+historical methods.
+
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Method & VaR \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Modified & -0.01336006 \\
+Gaussian & -0.01659899 \\
+Historical & -0.01464882 \\
+\end{longtable}
+
+Using the modified VaR as the benchmark, there is a 5 percent
+probability of losing at least about 1.3 percent in one day when holding
+the financial institutions index.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(returns)}
+\NormalTok{model.fit }\OtherTok{\textless{}{-}} \FunctionTok{ugarchfit}\NormalTok{(}\AttributeTok{spec=}\NormalTok{garch, }\AttributeTok{data=}\NormalTok{returns, }\AttributeTok{solver=}\StringTok{"solnp"}\NormalTok{)}
+\NormalTok{model.fit}
+
+\FunctionTok{qplot}\NormalTok{(}\AttributeTok{y=}\NormalTok{returns, }\AttributeTok{x=}\DecValTok{1}\SpecialCharTok{:}\NormalTok{n, }\AttributeTok{geom=}\StringTok{"point"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size=}\FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{model.fit}\SpecialCharTok{@}\NormalTok{fit}\SpecialCharTok{$}\NormalTok{sigma}\SpecialCharTok{*}\FunctionTok{qdist}\NormalTok{(}\AttributeTok{distribution=}\StringTok{"sstd"}\NormalTok{,}
+                                            \AttributeTok{shape=}\FloatTok{3.4125}\NormalTok{, }\AttributeTok{p=}\FloatTok{0.05}\NormalTok{), }\AttributeTok{x=}\DecValTok{1}\SpecialCharTok{:}\NormalTok{n),}
+            \AttributeTok{colour=}\StringTok{"red"}\NormalTok{, }\AttributeTok{size=}\FloatTok{1.0}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{model.fit}\SpecialCharTok{@}\NormalTok{fit}\SpecialCharTok{$}\NormalTok{sigma}\SpecialCharTok{*}\FunctionTok{qdist}\NormalTok{(}\AttributeTok{distribution=}\StringTok{"sstd"}\NormalTok{,}
+                                            \AttributeTok{shape=}\FloatTok{3.4125}\NormalTok{, }\AttributeTok{p=}\FloatTok{0.95}\NormalTok{), }\AttributeTok{x=}\DecValTok{1}\SpecialCharTok{:}\NormalTok{n),}
+            \AttributeTok{colour=}\StringTok{"red"}\NormalTok{, }\AttributeTok{size=}\FloatTok{1.0}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x=}\StringTok{" "}\NormalTok{, }\AttributeTok{y=}\StringTok{"Daily Return"}\NormalTok{, }\AttributeTok{title=}\StringTok{"Value at Risk Comparison"}\NormalTok{)}
+
+\NormalTok{sarmaye }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(}\AttributeTok{year=}\FunctionTok{substr}\NormalTok{(sarmaye[,}\DecValTok{1}\NormalTok{],}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{),}
+                            \AttributeTok{month=}\FunctionTok{substr}\NormalTok{(sarmaye[,}\DecValTok{1}\NormalTok{],}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{),}
+                            \AttributeTok{day=}\FunctionTok{substr}\NormalTok{(sarmaye[,}\DecValTok{1}\NormalTok{],}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{), sarmaye))}
+\NormalTok{sarmaye}\SpecialCharTok{$}\NormalTok{date }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(sarmaye}\SpecialCharTok{$}\NormalTok{date)}
+\NormalTok{price\_xts }\OtherTok{\textless{}{-}} \FunctionTok{xts}\NormalTok{(sarmaye}\SpecialCharTok{$}\NormalTok{price, }\AttributeTok{order.by=}\NormalTok{sarmaye}\SpecialCharTok{$}\NormalTok{date)}
+\NormalTok{return\_xts }\OtherTok{\textless{}{-}} \FunctionTok{diff}\NormalTok{(}\FunctionTok{log}\NormalTok{(price\_xts), }\AttributeTok{lag=}\DecValTok{1}\NormalTok{)}
+
+\FunctionTok{mean}\NormalTok{(returns)}
+\FunctionTok{sd}\NormalTok{(returns)}
+\FunctionTok{skewness}\NormalTok{(returns)}
+\FunctionTok{kurtosis}\NormalTok{(returns)}
+
+\FunctionTok{VaR}\NormalTok{(}\AttributeTok{R=}\NormalTok{return\_xts, }\AttributeTok{p=}\FloatTok{0.95}\NormalTok{, }\AttributeTok{method=}\FunctionTok{c}\NormalTok{(}\StringTok{"modified"}\NormalTok{), }\AttributeTok{invert=}\ConstantTok{TRUE}\NormalTok{,}
+    \AttributeTok{mu=}\FloatTok{0.001377912}\NormalTok{, }\AttributeTok{sigma=}\FloatTok{0.01093079}\NormalTok{, }\AttributeTok{m3=}\FloatTok{0.7302357}\NormalTok{, }\AttributeTok{m4=}\FloatTok{3.893968}\NormalTok{)}
+\FunctionTok{VaR}\NormalTok{(}\AttributeTok{R=}\NormalTok{return\_xts, }\AttributeTok{p=}\FloatTok{0.95}\NormalTok{, }\AttributeTok{method=}\FunctionTok{c}\NormalTok{(}\StringTok{"gaussian"}\NormalTok{), }\AttributeTok{invert=}\ConstantTok{TRUE}\NormalTok{,}
+    \AttributeTok{mu=}\FloatTok{0.001377912}\NormalTok{, }\AttributeTok{sigma=}\FloatTok{0.01093079}\NormalTok{, }\AttributeTok{m3=}\FloatTok{0.7302357}\NormalTok{, }\AttributeTok{m4=}\FloatTok{3.893968}\NormalTok{)}
+\FunctionTok{VaR}\NormalTok{(}\AttributeTok{R=}\NormalTok{return\_xts, }\AttributeTok{p=}\FloatTok{0.95}\NormalTok{, }\AttributeTok{method=}\FunctionTok{c}\NormalTok{(}\StringTok{"historical"}\NormalTok{), }\AttributeTok{invert=}\ConstantTok{TRUE}\NormalTok{,}
+    \AttributeTok{mu=}\FloatTok{0.001377912}\NormalTok{, }\AttributeTok{sigma=}\FloatTok{0.01093079}\NormalTok{, }\AttributeTok{m3=}\FloatTok{0.7302357}\NormalTok{, }\AttributeTok{m4=}\FloatTok{3.893968}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Conclusion}\label{conclusion}
+
+The return series is stationary but long-memory. The ARMA(5,5) mean
+equation is adequate according to residual autocorrelation diagnostics,
+but returns are non-normal and volatility clustering remains. FI-GARCH
+modeling and VaR estimation are therefore appropriate tools for the risk
+analysis.
+
+\end{document}

@@ -1,0 +1,330 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\section{Project 3 - Seasonal Unit Roots and SARIMA
+Modeling}\label{project-3---seasonal-unit-roots-and-sarima-modeling}
+
+\textbf{Course:} Financial Econometrics\\
+\textbf{Author:} Omid Karami Chamgordani - 400203402\\
+\textbf{Date:} 2023-01-16
+
+\subsection{Objective}\label{objective}
+
+This project uses two Tehran Stock Exchange industry indices: the
+leather-products index and the petroleum-products index. The data were
+downloaded with the TSE client and cleaned in Excel. The report merges
+the two daily datasets, converts the frequency to monthly and quarterly
+observations, tests for seasonal unit roots using the HEGY procedure,
+applies seasonal filters, and estimates SARIMA models for forecasting.
+
+\subsection{Data import and merge}\label{data-import-and-merge}
+
+The cleaned files are stored in the \texttt{data/} folder. The code
+reads the two Excel files and merges them by date.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Data cleaning has been done in Excel}
+
+\FunctionTok{library}\NormalTok{(pdR)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(forecast)}
+\FunctionTok{library}\NormalTok{(tseries)}
+\FunctionTok{library}\NormalTok{(rio)}
+\FunctionTok{library}\NormalTok{(readxl)}
+\FunctionTok{library}\NormalTok{(zoo)}
+\FunctionTok{library}\NormalTok{(lmtest)}
+\FunctionTok{library}\NormalTok{(arfima)}
+
+\NormalTok{charm }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/leather.xlsx"}\NormalTok{)}
+\NormalTok{naft  }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/oil.xlsx"}\NormalTok{)}
+
+\NormalTok{total }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(charm, naft, }\AttributeTok{by=}\FunctionTok{c}\NormalTok{(}\StringTok{"date"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Frequency conversion}\label{frequency-conversion}
+
+The date variable is decomposed into year, month, and day. The daily
+observations are first plotted directly. Then monthly and quarterly
+versions are built by averaging observations within each calendar
+period.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(}\AttributeTok{year=}\FunctionTok{substr}\NormalTok{(total[,}\DecValTok{1}\NormalTok{],}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{),}
+                       \AttributeTok{month=}\FunctionTok{substr}\NormalTok{(total[,}\DecValTok{1}\NormalTok{],}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{),}
+                       \AttributeTok{day=}\FunctionTok{substr}\NormalTok{(total[,}\DecValTok{1}\NormalTok{],}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{), total[, }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]))}
+
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{lapply}\NormalTok{(df, as.numeric))}
+\FunctionTok{names}\NormalTok{(df)[}\DecValTok{4}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"charm\_price"}
+\FunctionTok{names}\NormalTok{(df)[}\DecValTok{5}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"naft\_price"}
+
+\CommentTok{\# daily plots}
+\FunctionTok{ts.plot}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{charm\_price)}
+\FunctionTok{ts.plot}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{naft\_price)}
+
+\CommentTok{\# monthly leather index}
+\NormalTok{Ch }\OtherTok{\textless{}{-}} \FunctionTok{aggregate}\NormalTok{(charm\_price }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year }\SpecialCharTok{+}\NormalTok{ month, }\AttributeTok{data=}\NormalTok{df, mean)}
+\NormalTok{charm\_price\_M }\OtherTok{\textless{}{-}}\NormalTok{ Ch[}\FunctionTok{order}\NormalTok{(Ch}\SpecialCharTok{$}\NormalTok{year, Ch}\SpecialCharTok{$}\NormalTok{month),]}
+\NormalTok{c1 }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(charm\_price\_M}\SpecialCharTok{$}\NormalTok{charm\_price, }\AttributeTok{start=}\FunctionTok{c}\NormalTok{(}\DecValTok{2008}\NormalTok{, }\DecValTok{12}\NormalTok{), }\AttributeTok{frequency=}\DecValTok{12}\NormalTok{)}
+\FunctionTok{ts.plot}\NormalTok{(c1)}
+
+\CommentTok{\# quarterly leather index}
+\NormalTok{charm\_price\_M}\SpecialCharTok{$}\NormalTok{Quarter }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"."}\NormalTok{)}
+\NormalTok{charm\_price\_M}\SpecialCharTok{$}\NormalTok{Quarter[(charm\_price\_M}\SpecialCharTok{$}\NormalTok{month}\SpecialCharTok{\textless{}=}\DecValTok{3}\NormalTok{)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{charm\_price\_M}\SpecialCharTok{$}\NormalTok{Quarter[(charm\_price\_M}\SpecialCharTok{$}\NormalTok{month}\SpecialCharTok{\textgreater{}}\DecValTok{3}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (charm\_price\_M}\SpecialCharTok{$}\NormalTok{month}\SpecialCharTok{\textless{}}\DecValTok{7}\NormalTok{)] }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{charm\_price\_M}\SpecialCharTok{$}\NormalTok{Quarter[(charm\_price\_M}\SpecialCharTok{$}\NormalTok{month}\SpecialCharTok{\textgreater{}}\DecValTok{6}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (charm\_price\_M}\SpecialCharTok{$}\NormalTok{month}\SpecialCharTok{\textless{}}\DecValTok{10}\NormalTok{)] }\OtherTok{\textless{}{-}} \DecValTok{3}
+\NormalTok{charm\_price\_M}\SpecialCharTok{$}\NormalTok{Quarter[(charm\_price\_M}\SpecialCharTok{$}\NormalTok{month}\SpecialCharTok{\textgreater{}}\DecValTok{9}\NormalTok{)] }\OtherTok{\textless{}{-}} \DecValTok{4}
+\NormalTok{Qcharm }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\FunctionTok{aggregate}\NormalTok{(charm\_price }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year }\SpecialCharTok{+}\NormalTok{ Quarter,}
+                               \AttributeTok{data=}\NormalTok{charm\_price\_M, mean))}
+\NormalTok{charm\_price\_Q }\OtherTok{\textless{}{-}}\NormalTok{ Qcharm[}\FunctionTok{order}\NormalTok{(Qcharm}\SpecialCharTok{$}\NormalTok{year, Qcharm}\SpecialCharTok{$}\NormalTok{Quarter),]}
+\NormalTok{c2 }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(charm\_price\_Q}\SpecialCharTok{$}\NormalTok{charm\_price, }\AttributeTok{start=}\FunctionTok{c}\NormalTok{(}\DecValTok{2008}\NormalTok{, }\DecValTok{4}\NormalTok{), }\AttributeTok{frequency=}\DecValTok{4}\NormalTok{)}
+\FunctionTok{ts.plot}\NormalTok{(c2)}
+
+\CommentTok{\# monthly and quarterly petroleum index}
+\NormalTok{Nf }\OtherTok{\textless{}{-}} \FunctionTok{aggregate}\NormalTok{(naft\_price }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year }\SpecialCharTok{+}\NormalTok{ month, }\AttributeTok{data=}\NormalTok{df, mean)}
+\NormalTok{naft\_price\_M }\OtherTok{\textless{}{-}}\NormalTok{ Nf[}\FunctionTok{order}\NormalTok{(Nf}\SpecialCharTok{$}\NormalTok{year, Nf}\SpecialCharTok{$}\NormalTok{month),]}
+\NormalTok{n1 }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(naft\_price\_M}\SpecialCharTok{$}\NormalTok{naft\_price, }\AttributeTok{start=}\FunctionTok{c}\NormalTok{(}\DecValTok{2008}\NormalTok{, }\DecValTok{12}\NormalTok{), }\AttributeTok{frequency=}\DecValTok{12}\NormalTok{)}
+\FunctionTok{ts.plot}\NormalTok{(n1)}
+
+\NormalTok{naft\_price\_M}\SpecialCharTok{$}\NormalTok{Quarter }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"."}\NormalTok{)}
+\NormalTok{naft\_price\_M}\SpecialCharTok{$}\NormalTok{Quarter[(naft\_price\_M}\SpecialCharTok{$}\NormalTok{month}\SpecialCharTok{\textless{}=}\DecValTok{3}\NormalTok{)] }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{naft\_price\_M}\SpecialCharTok{$}\NormalTok{Quarter[(naft\_price\_M}\SpecialCharTok{$}\NormalTok{month}\SpecialCharTok{\textgreater{}}\DecValTok{3}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (naft\_price\_M}\SpecialCharTok{$}\NormalTok{month}\SpecialCharTok{\textless{}}\DecValTok{7}\NormalTok{)] }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{naft\_price\_M}\SpecialCharTok{$}\NormalTok{Quarter[(naft\_price\_M}\SpecialCharTok{$}\NormalTok{month}\SpecialCharTok{\textgreater{}}\DecValTok{6}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ (naft\_price\_M}\SpecialCharTok{$}\NormalTok{month}\SpecialCharTok{\textless{}}\DecValTok{10}\NormalTok{)] }\OtherTok{\textless{}{-}} \DecValTok{3}
+\NormalTok{naft\_price\_M}\SpecialCharTok{$}\NormalTok{Quarter[(naft\_price\_M}\SpecialCharTok{$}\NormalTok{month}\SpecialCharTok{\textgreater{}}\DecValTok{9}\NormalTok{)] }\OtherTok{\textless{}{-}} \DecValTok{4}
+\NormalTok{Qnaft }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\FunctionTok{aggregate}\NormalTok{(naft\_price }\SpecialCharTok{\textasciitilde{}}\NormalTok{ year }\SpecialCharTok{+}\NormalTok{ Quarter,}
+                              \AttributeTok{data=}\NormalTok{naft\_price\_M, mean))}
+\NormalTok{naft\_price\_Q }\OtherTok{\textless{}{-}}\NormalTok{ Qnaft[}\FunctionTok{order}\NormalTok{(Qnaft}\SpecialCharTok{$}\NormalTok{year, Qnaft}\SpecialCharTok{$}\NormalTok{Quarter),]}
+\NormalTok{n2 }\OtherTok{\textless{}{-}} \FunctionTok{ts}\NormalTok{(naft\_price\_Q}\SpecialCharTok{$}\NormalTok{naft\_price, }\AttributeTok{start=}\FunctionTok{c}\NormalTok{(}\DecValTok{2008}\NormalTok{, }\DecValTok{4}\NormalTok{), }\AttributeTok{frequency=}\DecValTok{4}\NormalTok{)}
+\FunctionTok{ts.plot}\NormalTok{(n2)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{HEGY seasonal unit-root
+tests}\label{hegy-seasonal-unit-root-tests}
+
+For each quarterly series, the HEGY test is first estimated with an
+intercept, a deterministic trend, and seasonal dummies. Since these
+deterministic components are not statistically strong, the reduced
+specification without deterministic terms is also reported.
+
+For the leather-products index, the reduced HEGY statistics are
+approximately \texttt{tpi\_1\ =\ 0.820}, \texttt{tpi\_2\ =\ -1.886}, and
+\texttt{Fpi\_3:4\ =\ 2.814}. At the 5 percent level, these statistics do
+not provide enough evidence to reject the seasonal unit-root nulls. The
+series therefore shows evidence of quarterly, semiannual, and annual
+seasonal unit-root behavior.
+
+For the petroleum-products index, the reduced HEGY statistics are
+approximately \texttt{tpi\_1\ =\ 1.952}, \texttt{tpi\_2\ =\ 2.511}, and
+\texttt{Fpi\_3:4\ =\ 0.435}, again indicating that the seasonal
+unit-root nulls are not rejected in the unfiltered series.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# HEGY test for leather index}
+\NormalTok{hegy.out }\OtherTok{\textless{}{-}} \FunctionTok{HEGY.test}\NormalTok{(}\AttributeTok{wts=}\NormalTok{c2, }\AttributeTok{itsd=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)), }\AttributeTok{regvar=}\DecValTok{0}\NormalTok{,}
+                      \AttributeTok{selectlags=}\FunctionTok{list}\NormalTok{(}\AttributeTok{mode=}\StringTok{"aic"}\NormalTok{, }\AttributeTok{pmax=}\DecValTok{20}\NormalTok{))}
+\NormalTok{hegy.out}\SpecialCharTok{$}\NormalTok{stats}
+\NormalTok{hegy.out}\SpecialCharTok{$}\NormalTok{hegycoefs}
+\NormalTok{hegy.out}\SpecialCharTok{$}\NormalTok{regvarcoefs}
+
+\NormalTok{hegy.out }\OtherTok{\textless{}{-}} \FunctionTok{HEGY.test}\NormalTok{(}\AttributeTok{wts=}\NormalTok{c2, }\AttributeTok{itsd=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }\AttributeTok{regvar=}\DecValTok{0}\NormalTok{,}
+                      \AttributeTok{selectlags=}\FunctionTok{list}\NormalTok{(}\AttributeTok{mode=}\StringTok{"aic"}\NormalTok{, }\AttributeTok{pmax=}\DecValTok{20}\NormalTok{))}
+\NormalTok{hegy.out}\SpecialCharTok{$}\NormalTok{stats}
+\NormalTok{hegy.out}\SpecialCharTok{$}\NormalTok{hegycoefs}
+\NormalTok{hegy.out}\SpecialCharTok{$}\NormalTok{regvarcoefs}
+
+\CommentTok{\# HEGY test for petroleum index}
+\NormalTok{hegy.out }\OtherTok{\textless{}{-}} \FunctionTok{HEGY.test}\NormalTok{(}\AttributeTok{wts=}\NormalTok{n2, }\AttributeTok{itsd=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)), }\AttributeTok{regvar=}\DecValTok{0}\NormalTok{,}
+                      \AttributeTok{selectlags=}\FunctionTok{list}\NormalTok{(}\AttributeTok{mode=}\StringTok{"aic"}\NormalTok{, }\AttributeTok{pmax=}\DecValTok{20}\NormalTok{))}
+\NormalTok{hegy.out}\SpecialCharTok{$}\NormalTok{stats}
+\NormalTok{hegy.out}\SpecialCharTok{$}\NormalTok{hegycoefs}
+\NormalTok{hegy.out}\SpecialCharTok{$}\NormalTok{regvarcoefs}
+
+\NormalTok{hegy.out }\OtherTok{\textless{}{-}} \FunctionTok{HEGY.test}\NormalTok{(}\AttributeTok{wts=}\NormalTok{n2, }\AttributeTok{itsd=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }\AttributeTok{regvar=}\DecValTok{0}\NormalTok{,}
+                      \AttributeTok{selectlags=}\FunctionTok{list}\NormalTok{(}\AttributeTok{mode=}\StringTok{"aic"}\NormalTok{, }\AttributeTok{pmax=}\DecValTok{20}\NormalTok{))}
+\NormalTok{hegy.out}\SpecialCharTok{$}\NormalTok{stats}
+\NormalTok{hegy.out}\SpecialCharTok{$}\NormalTok{hegycoefs}
+\NormalTok{hegy.out}\SpecialCharTok{$}\NormalTok{regvarcoefs}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Seasonal filters}\label{seasonal-filters}
+
+Successive seasonal filters are applied until the HEGY statistics reject
+the relevant unit-root components. The leather index becomes seasonally
+stationary after seven filtering steps. The petroleum index becomes
+seasonally stationary after five filtering steps. The additional
+nonseasonal differencing order is \texttt{d\ =\ 0} for both filtered
+series.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# leather filters}
+\NormalTok{filter\_ch  }\OtherTok{\textless{}{-}}\NormalTok{ c2 }\SpecialCharTok{{-}}\NormalTok{ c2[}\DecValTok{5}\SpecialCharTok{:}\DecValTok{62}\NormalTok{]                 }\CommentTok{\# 1 {-} B\^{}4}
+\NormalTok{filter\_2ch }\OtherTok{\textless{}{-}}\NormalTok{ filter\_ch }\SpecialCharTok{{-}}\NormalTok{ filter\_ch[}\DecValTok{3}\SpecialCharTok{:}\DecValTok{60}\NormalTok{]   }\CommentTok{\# 1 {-} B\^{}2}
+\NormalTok{filter\_3ch }\OtherTok{\textless{}{-}}\NormalTok{ filter\_2ch }\SpecialCharTok{{-}}\NormalTok{ filter\_2ch[}\DecValTok{5}\SpecialCharTok{:}\DecValTok{62}\NormalTok{] }\CommentTok{\# 1 {-} B\^{}4}
+\NormalTok{filter\_4ch }\OtherTok{\textless{}{-}}\NormalTok{ filter\_3ch }\SpecialCharTok{{-}}\NormalTok{ filter\_3ch[}\DecValTok{3}\SpecialCharTok{:}\DecValTok{60}\NormalTok{] }\CommentTok{\# 1 {-} B\^{}2}
+\NormalTok{filter\_5ch }\OtherTok{\textless{}{-}}\NormalTok{ filter\_4ch }\SpecialCharTok{+}\NormalTok{ filter\_4ch[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{59}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ filter\_4ch[}\DecValTok{3}\SpecialCharTok{:}\DecValTok{60}\NormalTok{] }\SpecialCharTok{+}\NormalTok{ filter\_ch[}\DecValTok{4}\SpecialCharTok{:}\DecValTok{61}\NormalTok{]}
+\NormalTok{filter\_6ch }\OtherTok{\textless{}{-}}\NormalTok{ filter\_5ch }\SpecialCharTok{+}\NormalTok{ filter\_5ch[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{59}\NormalTok{]}
+\NormalTok{filter\_7ch }\OtherTok{\textless{}{-}}\NormalTok{ filter\_6ch }\SpecialCharTok{{-}}\NormalTok{ filter\_6ch[}\DecValTok{5}\SpecialCharTok{:}\DecValTok{62}\NormalTok{]}
+
+\CommentTok{\# petroleum filters}
+\NormalTok{filter\_na  }\OtherTok{\textless{}{-}}\NormalTok{ n2 }\SpecialCharTok{{-}}\NormalTok{ n2[}\DecValTok{5}\SpecialCharTok{:}\DecValTok{62}\NormalTok{]}
+\NormalTok{filter\_2na }\OtherTok{\textless{}{-}}\NormalTok{ filter\_na }\SpecialCharTok{{-}}\NormalTok{ filter\_na[}\DecValTok{5}\SpecialCharTok{:}\DecValTok{62}\NormalTok{]}
+\NormalTok{filter\_3na }\OtherTok{\textless{}{-}}\NormalTok{ filter\_2na }\SpecialCharTok{{-}}\NormalTok{ filter\_2na[}\DecValTok{3}\SpecialCharTok{:}\DecValTok{60}\NormalTok{]}
+\NormalTok{filter\_4na }\OtherTok{\textless{}{-}}\NormalTok{ filter\_3na }\SpecialCharTok{+}\NormalTok{ filter\_3na[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{59}\NormalTok{]}
+\NormalTok{filter\_5na }\OtherTok{\textless{}{-}}\NormalTok{ filter\_4na }\SpecialCharTok{+}\NormalTok{ filter\_4na[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{59}\NormalTok{]}
+
+\FunctionTok{ndiffs}\NormalTok{(filter\_7ch, }\AttributeTok{alpha=}\FloatTok{0.05}\NormalTok{, }\AttributeTok{test=}\FunctionTok{c}\NormalTok{(}\StringTok{"adf"}\NormalTok{), }\AttributeTok{max.d=}\DecValTok{10}\NormalTok{)}
+\FunctionTok{ndiffs}\NormalTok{(filter\_5na, }\AttributeTok{alpha=}\FloatTok{0.05}\NormalTok{, }\AttributeTok{test=}\FunctionTok{c}\NormalTok{(}\StringTok{"adf"}\NormalTok{), }\AttributeTok{max.d=}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{SARIMA modeling and
+forecasting}\label{sarima-modeling-and-forecasting}
+
+Automatic SARIMA selection gives an ARIMA(3,0,0)(0,0,2){[}4{]} model
+with zero mean for the filtered leather series, and an
+ARIMA(2,0,0)(0,0,2){[}4{]} model with non-zero mean for the filtered
+petroleum series. Forecasts are then generated for eight quarters ahead.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{auto.arima}\NormalTok{(filter\_7ch, }\AttributeTok{max.p=}\DecValTok{5}\NormalTok{, }\AttributeTok{max.q=}\DecValTok{5}\NormalTok{, }\AttributeTok{max.P=}\DecValTok{3}\NormalTok{, }\AttributeTok{max.Q=}\DecValTok{3}\NormalTok{,}
+           \AttributeTok{max.d=}\DecValTok{4}\NormalTok{, }\AttributeTok{max.D=}\DecValTok{4}\NormalTok{, }\AttributeTok{stepwise=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{approximation=}\ConstantTok{FALSE}\NormalTok{)}
+
+\FunctionTok{auto.arima}\NormalTok{(filter\_5na, }\AttributeTok{max.p=}\DecValTok{5}\NormalTok{, }\AttributeTok{max.q=}\DecValTok{5}\NormalTok{, }\AttributeTok{max.P=}\DecValTok{3}\NormalTok{, }\AttributeTok{max.Q=}\DecValTok{3}\NormalTok{,}
+           \AttributeTok{max.d=}\DecValTok{4}\NormalTok{, }\AttributeTok{max.D=}\DecValTok{4}\NormalTok{, }\AttributeTok{stepwise=}\ConstantTok{FALSE}\NormalTok{, }\AttributeTok{approximation=}\ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# leather forecast}
+\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{arima}\NormalTok{(c2, }\AttributeTok{order=}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }\AttributeTok{seasonal=}\FunctionTok{list}\NormalTok{(}\AttributeTok{order=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{period=}\DecValTok{4}\NormalTok{),}
+             \AttributeTok{method=}\StringTok{"CSS"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(fit}\SpecialCharTok{$}\NormalTok{residuals)}
+\FunctionTok{acf}\NormalTok{(fit}\SpecialCharTok{$}\NormalTok{residuals, }\AttributeTok{lag=}\DecValTok{15}\NormalTok{)}
+\FunctionTok{pacf}\NormalTok{(fit}\SpecialCharTok{$}\NormalTok{residuals, }\AttributeTok{lag=}\DecValTok{15}\NormalTok{)}
+\FunctionTok{forecast}\NormalTok{(fit, }\AttributeTok{h=}\DecValTok{8}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{forecast}\NormalTok{(fit, }\AttributeTok{h=}\DecValTok{8}\NormalTok{))}
+
+\CommentTok{\# petroleum forecast}
+\NormalTok{fit }\OtherTok{\textless{}{-}} \FunctionTok{arima}\NormalTok{(n2, }\AttributeTok{order=}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }\AttributeTok{seasonal=}\FunctionTok{list}\NormalTok{(}\AttributeTok{order=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{period=}\DecValTok{4}\NormalTok{),}
+             \AttributeTok{method=}\StringTok{"CSS"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(fit}\SpecialCharTok{$}\NormalTok{residuals)}
+\FunctionTok{acf}\NormalTok{(fit}\SpecialCharTok{$}\NormalTok{residuals, }\AttributeTok{lag=}\DecValTok{15}\NormalTok{)}
+\FunctionTok{pacf}\NormalTok{(fit}\SpecialCharTok{$}\NormalTok{residuals, }\AttributeTok{lag=}\DecValTok{15}\NormalTok{)}
+\FunctionTok{forecast}\NormalTok{(fit, }\AttributeTok{h=}\DecValTok{8}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{forecast}\NormalTok{(fit, }\AttributeTok{h=}\DecValTok{8}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Conclusion}\label{conclusion}
+
+Both industry indices display strong seasonal non-stationarity before
+filtering. After applying the selected seasonal filters, no additional
+nonseasonal differencing is required. The final SARIMA specifications
+provide an interpretable framework for quarterly forecasting.
+
+\end{document}
