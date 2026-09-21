@@ -53,57 +53,52 @@ ts.plot(returns2, main = "daily return of investment index", ylab = "return", yl
 fdGPH(returns, bandw.exp=0.5)
 
 #finding p & q of the ARMA model in mean equation
-AIC=matrix(nrow=6, ncol=6)
+aic_grid = matrix(NA_real_, nrow=6, ncol=6)
 
 for (i in 1:6)
 {
   for (j in 1:6)
   {
-    AIC[i,j] = AIC (arima(returns,c(i-1,0,j-1),method = c ("CSS-ML"), optim.control = list(maxit=5000), kappa=1e4), k=2)
+    candidate_model = arima(
+      returns,
+      c(i-1,0,j-1),
+      method = "CSS-ML",
+      optim.control = list(maxit=5000),
+      kappa=1e4
+    )
+    aic_grid[i,j] = AIC(candidate_model)
   }
 }
 
-for (i in 1:6)
-{
-  for (j in 1:6)
-  {
-    if (AIC[i,j]==min(AIC))
-    {
-      p = i-1
-      q = j-1
-      ob=3393-min(i,j)
-    }
-  }
-}
+best_aic = which(aic_grid == min(aic_grid, na.rm = TRUE), arr.ind = TRUE)[1, ]
+p = best_aic[1] - 1
+q = best_aic[2] - 1
 arma_sarmaye=arima(returns,c(p,0,q),method = c ("CSS-ML"), optim.control = list(maxit=5000), kappa=1e4)
 arma_sarmaye
 
 # p=5,q=5
 
 
-BIC=matrix(nrow=6, ncol=6)
+bic_grid = matrix(NA_real_, nrow=6, ncol=6)
 
 for (i in 1:6)
 {
   for (j in 1:6)
   {
-    BIC[i,j] = BIC (arima(returns,c(i-1,0,j-1),method = c ("CSS-ML"), optim.control = list(maxit=5000), kappa=1e4))
+    candidate_model = arima(
+      returns,
+      c(i-1,0,j-1),
+      method = "CSS-ML",
+      optim.control = list(maxit=5000),
+      kappa=1e4
+    )
+    bic_grid[i,j] = BIC(candidate_model)
   }
-  
 }
 
-for (i in 1:6)
-{
-  for (j in 1:6)
-  {
-    if (BIC[i,j]==min(BIC))
-    {
-      p = i-1
-      q = j-1
-      ob=3393-min(i,j)
-    }
-  }
-}
+best_bic = which(bic_grid == min(bic_grid, na.rm = TRUE), arr.ind = TRUE)[1, ]
+p = best_bic[1] - 1
+q = best_bic[2] - 1
 
 arma_sarmaye2=arima(returns,c(p,0,q),method = c ("CSS-ML"), optim.control = list(maxit=5000), kappa=1e4)
 arma_sarmaye2
