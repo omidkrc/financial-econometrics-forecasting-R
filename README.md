@@ -1,14 +1,28 @@
-# Financial Econometrics Projects in R
+# Financial Econometrics and Forecasting in R
 
-This repository includes three projects from my Financial Econometrics course.  
-The original reports were written in Persian using R Markdown. I translated and cleaned them in English while keeping the R code and main results.
+## Overview
 
-The projects mainly focus on unit root tests, seasonal unit roots, ARMA models, FI-GARCH models, and Value-at-Risk.
+This repository contains three applied projects from a Financial Econometrics course, implemented in **R**. Together they cover unit-root testing, seasonal time-series modeling, ARMA mean equations, long-memory volatility models, forecasting, and Value-at-Risk.
+
+The repository is particularly focused on the workflow behind empirical financial research: importing and transforming data, selecting time-series specifications, diagnosing residuals, estimating volatility, producing forecasts, and interpreting risk measures.
+
+## Skills Demonstrated
+
+- R for empirical and financial data analysis
+- Time-series transformation and frequency conversion
+- Augmented Dickey-Fuller and HEGY unit-root testing
+- SARIMA modeling
+- ARMA specification and model selection
+- Long-memory and FI-GARCH volatility modeling
+- Volatility and return forecasting
+- Value-at-Risk estimation
+- Residual diagnostics and statistical testing
+- Reproducible reporting with R Markdown / LaTeX
 
 ## Repository Structure
 
 ```text
-Financial-Econometrics-ARMA-GARCH-VAR/
+Fin_metrics/
 ├── README.md
 ├── requirements.R
 ├── data/
@@ -22,68 +36,57 @@ Financial-Econometrics-ARMA-GARCH-VAR/
 │   └── project4_arma_figarch_var.R
 └── reports/
     ├── project2/
-    │   ├── project2_report_en.Rmd
-    │   ├── project2_report_en.tex
-    │   └── project2_report_en.pdf
     ├── project3/
-    │   ├── project3_report_en.Rmd
-    │   ├── project3_report_en.tex
-    │   └── project3_report_en.pdf
     └── project4/
-        ├── project4_report_en.Rmd
-        ├── project4_report_en.tex
-        └── project4_report_en.pdf
 ```
 
-## Project 2: Unit Root Test
+The report folders contain English R Markdown / LaTeX versions of the course reports together with generated PDFs where available.
 
-In this project, I worked with an annual Brazilian economic time series from Quandl/BCB.  
-I plotted the series, estimated a simple regression, and used the Augmented Dickey-Fuller test to check for a unit root.
+## Project 2 — Unit Roots
 
-Main topics:
+This project works with an annual Brazilian economic time series obtained through Quandl/BCB. The analysis examines persistence using an Augmented Dickey-Fuller framework and first differences.
 
-- Time series plot
-- OLS regression
-- ADF unit root test
-- First difference of the series
+Main methods:
 
-## Project 3: Seasonal Unit Roots and SARIMA
+- time-series visualization;
+- autoregressive regression;
+- ADF testing under trend, drift, and no-deterministic-term specifications; and
+- first-difference analysis.
 
-This project uses two TSE industry indices: leather products and petroleum products.  
-The daily data were converted to monthly and quarterly frequencies. Then I used HEGY tests to check seasonal unit roots and estimated SARIMA models.
+## Project 3 — Seasonal Unit Roots and SARIMA
 
-Main topics:
+This project analyzes two Tehran Stock Exchange industry indices for leather products and petroleum products. Daily observations are transformed to monthly and quarterly frequencies before seasonal-unit-root and SARIMA analysis.
 
-- Merging data
-- Changing data frequency
-- Daily, monthly, and quarterly plots
-- HEGY seasonal unit root test
-- SARIMA modeling
+Main methods:
 
-## Project 4: ARMA, FI-GARCH, and VaR
+- data merging and frequency conversion;
+- daily, monthly, and quarterly time-series analysis;
+- HEGY seasonal-unit-root testing; and
+- SARIMA specification.
 
-In this project, I analyzed daily returns of a financial institutions index.  
-I estimated an ARMA model for the mean equation, checked the residuals, fitted FI-GARCH-type volatility models, and calculated Value-at-Risk.
+## Project 4 — ARMA, FI-GARCH, Forecasting, and VaR
 
-Main topics:
+This project analyzes daily returns for a financial-institutions index. It combines mean-equation modeling with volatility and risk analysis.
 
-- Return calculation
-- Long memory
-- ARMA model selection
-- Residual diagnostics
-- ARCH effect
-- FI-GARCH modeling
-- Value-at-Risk
+Main methods:
+
+- log-return construction;
+- long-memory diagnostics;
+- ARMA order comparison using information criteria;
+- residual and ARCH diagnostics;
+- FI-GARCH volatility modeling;
+- short-horizon volatility / return forecasting; and
+- modified, Gaussian, and historical Value-at-Risk calculations.
 
 ## How to Run
 
-First install the required R packages:
+Install any missing R packages by running:
 
 ```r
 source("requirements.R")
 ```
 
-Then run each script from the root folder of the repository:
+Then run the scripts from the repository root:
 
 ```r
 source("R/project2_unit_root.R")
@@ -91,29 +94,18 @@ source("R/project3_seasonal_unit_roots_sarima.R")
 source("R/project4_arma_figarch_var.R")
 ```
 
-To render one of the reports:
-
-```r
-rmarkdown::render("reports/project3/project3_report_en.Rmd")
-```
-
-## Note about the Quandl API Key
-
-Project 2 uses Quandl data. I did not put the API key directly in the code.
-
-Before running Project 2, set your key in R:
+Project 2 requires a Quandl API key. Set it in the environment rather than storing it in source code:
 
 ```r
 Sys.setenv(QUANDL_API_KEY = "your-key-here")
 ```
 
-The script reads it with:
-
-```r
-Sys.getenv("QUANDL_API_KEY")
-```
-
 ## Data
 
-The Excel files used in Projects 3 and 4 are included in the `data/` folder.  
-The data were cleaned before being used in R.
+The Excel files used in Projects 3 and 4 are included under `data/`. Project 2 retrieves its series through the Quandl interface.
+
+## Author
+
+**Omid Karami**
+
+Financial Econometrics coursework and portfolio project.
