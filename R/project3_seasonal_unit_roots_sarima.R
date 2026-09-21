@@ -1,9 +1,5 @@
-# project 3
+# Project 3: Seasonal Unit Roots and SARIMA
 # Omid Karami
-# 400203402
-
-
-
 # Data cleaning has been done in excel
 
 
